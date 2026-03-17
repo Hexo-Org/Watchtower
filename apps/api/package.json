@@ -1,0 +1,27 @@
+{
+  "name": "@watchtower/api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@fastify/cors": "^9.0.0",
+    "@fastify/jwt": "^8.0.0",
+    "@fastify/oauth2": "^7.0.0",
+    "@fastify/rate-limit": "^9.0.0",
+    "@fastify/swagger": "^8.0.0",
+    "@fastify/swagger-ui": "^2.0.0",
+    "@fastify/websocket": "^9.0.0",
+    "@watchtower/shared": "*",
+    "fastify": "^4.24.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

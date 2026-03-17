@@ -107,20 +107,7 @@ Per-contract alert rule configuration with customizable thresholds, severity lev
 
 ---
 
-## Alert Types
 
-| Alert | Default Threshold | Description |
-|-------|-------------------|-------------|
-| **Error rate spike** | > 5% over 15 min | Error rate exceeds threshold in a sliding window |
-| **TTL critical** | < 7 days remaining | A persistent storage entry is approaching expiration |
-| **TTL expired** | Entry evicted | A tracked entry has been removed from the ledger |
-| **Resource limit** | > 80% of network cap | A function's resource consumption is nearing the ceiling |
-| **Invocation anomaly** | > 3σ from 7-day mean | Call volume deviates significantly — spike or sudden drop |
-| **Cost budget exceeded** | User-configured | Daily or weekly spend crosses the defined budget |
-| **Contract upgraded** | WASM hash changed | Someone deployed new code to a monitored contract |
-| **New error type** | First occurrence | An error type never seen before for this contract |
-
----
 
 ## Supported Alert Channels
 
@@ -165,20 +152,6 @@ For teams with existing observability stacks, Watchtower exposes all core metric
 
 ---
 
-## Tech Stack
-
-| Layer | Technology |
-|-------|------------|
-| **Frontend** | React, Recharts, WebSocket |
-| **API** | Node.js / Express (or Rust / Actix) |
-| **Time-series storage** | TimescaleDB (PostgreSQL extension) |
-| **Relational storage** | PostgreSQL |
-| **Cache & pub/sub** | Redis |
-| **Ingestion** | Custom workers polling Soroban RPC + Mercury API |
-| **Alerting** | Custom rule engine with channel-specific delivery adapters |
-| **Metrics export** | Prometheus exposition format endpoint |
-
----
 
 ## Onboarding
 
@@ -212,18 +185,6 @@ No SDK installation. No contract modifications. No ABI upload required (though u
 - **RPC rate limits apply.** Monitoring many contracts with many storage keys increases RPC call volume. Watchtower implements request budgeting and exponential backoff, but extremely high-volume setups may need a dedicated RPC endpoint.
 - **Alert latency is not sub-second.** Alerts are evaluated on a continuous loop with a target delivery time of under two minutes from threshold breach. This is operational monitoring, not a real-time trading signal.
 
----
-
-## Roadmap
-
-| Phase | Timeline | Scope |
-|-------|----------|-------|
-| **Foundation** | Weeks 1–4 | Contract registration, event ingestion, invocation tracking, error decoding, basic dashboard |
-| **Deep Monitoring** | Weeks 5–8 | Resource analytics, TTL health monitoring, Mercury backfill, WebSocket live feed |
-| **Cost & Alerts** | Weeks 9–12 | Cost attribution engine, alerting with Slack/PagerDuty/email, budget alerts |
-| **Platform Maturity** | Weeks 13–16 | Prometheus export, custom error enums, cross-contract views, Discord/Telegram, data export, multi-tenant RBAC, API documentation |
-
----
 
 ## Contributing
 
