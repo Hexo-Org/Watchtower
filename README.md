@@ -120,37 +120,6 @@ Per-contract alert rule configuration with customizable thresholds, severity lev
 | **Telegram** | Bot API integration |
 | **Webhook** | Generic HTTP POST with HMAC-signed JSON payload |
 
----
-
-## Data Sources
-
-Watchtower does not require any contract modifications or custom event emissions. It works entirely from external observation of on-chain data.
-
-| Source | Used For |
-|--------|----------|
-| **Soroban RPC `getEvents`** | Real-time invocation and contract event ingestion |
-| **Soroban RPC `getTransaction`** | Resource metrics, fees, and error detail extraction |
-| **Soroban RPC `getLedgerEntries`** | Storage entry TTL checks and contract metadata |
-| **Soroban RPC `getLatestLedger`** | Baseline ledger sequence for TTL calculations |
-| **Mercury Indexing API** | Historical backfill, event enrichment, and RPC fallback |
-
----
-
-## Prometheus Metrics
-
-For teams with existing observability stacks, Watchtower exposes all core metrics at a `/metrics` endpoint in Prometheus exposition format.
-
-| Metric | Labels |
-|--------|--------|
-| `watchtower_invocations_total` | contract, function, status |
-| `watchtower_error_rate` | contract, function |
-| `watchtower_resource_cpu_instructions` | contract, function, percentile |
-| `watchtower_resource_memory_bytes` | contract, function, percentile |
-| `watchtower_storage_ttl_remaining_ledgers` | contract, key, storage_type |
-| `watchtower_cost_daily_xlm` | contract, cost_type |
-| `watchtower_alerts_triggered_total` | contract, alert_type, severity |
-
----
 
 
 ## Onboarding
